@@ -38,7 +38,7 @@ label1= tk.Label(frame2, text='testtesttest')
 label1.grid(row=0, column=2, sticky='e')
 
 
-b1 = tk.Button(frame1, text='POL', bg='lightgrey')
+b1 = tk.Button(frame1, text='POL', bg='lightgrey', command=lambda: print('test'))
 b1.grid(row=0, column=1, sticky='news', padx=10, pady=10)
 
 b2 = tk.Button(frame1, text='EIS', bg='lightgrey')

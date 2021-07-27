@@ -49,6 +49,10 @@ class ZBTwindow(tk.Tk):
         b_id.grid(row=row, column=column)
         #i += 1
 
+class ZBTbutton():
+    def __init__(self):
+        tk.Button.__init__(self)
+
 
 class ZBTframe(tk.Toplevel):
 
@@ -56,5 +60,5 @@ class ZBTframe(tk.Toplevel):
         pass
 
 sub = ZBTSubframe('test')
-sub.addButton('Test')
+
 sub.mainloop()
