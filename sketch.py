@@ -1,45 +1,50 @@
 import tkinter as tk
 
-LARGE_FONT= ("Verdana", 12)
 
-class ZBT_GUI(tk.Tk):
+x_dim = 500
+y_dim = 400
 
-    def __init__(self, *args, **kwargs):
+rows = 10
+columns = 3
 
-        tk.Tk.__init__(self, *args, **kwargs)
-        container = tk.Frame(self)
-        #container.pack(side="top", fill="both", expand=True)
+title = 'ZBT Analysis'
 
-        container.grid_rowconfigure(0, weight=1)
-        container.grid_rowconfigure(1, weight=1)
-        container.grid_columnconfigure(0, weight=1)
+window = tk.Tk()
+window.iconbitmap('zbt_logo.ico')
+window.title(title)
+window.geometry('{}x{}'.format(x_dim, y_dim))
+
+window.grid_rowconfigure(0, weight=1)
+window.grid_rowconfigure(1, weight=1)
+window.grid_columnconfigure(0, weight=1)
+
+frame1 = tk.Frame(bg='grey20', height=480)
+frame2 = tk.Frame(bg='grey25', height=20)
+
+frame1.grid(row=0, column=0, sticky='news')
+frame2.grid(row=1, column=0, sticky='news')
+
+for r in range(rows):
+    frame1.grid_rowconfigure(r, weight=1)
+
+for c in range(columns):
+    frame1.grid_columnconfigure(c, weight=1)
 
 
-        self.frames = {}
-        frame = StartPage(container, self)
-        self.frames[StartPage] = frame
+frame2.grid_rowconfigure(0, weight=1)
+frame2.grid_columnconfigure(0, weight=1)
 
-        frame.grid(row=0, column=0, sticky="nsew")
-
-        self.show_frame(StartPage)
-
-    def show_frame(self, cont):
-        frame = self.frames[cont]
-        frame.tkraise()
-
-def qf(quickPrint):
-    print(quickPrint)
+label1= tk.Label(frame2, text='testtesttest')
+label1.grid(row=0, column=2, sticky='e')
 
 
-class StartPage(tk.Frame):
+b1 = tk.Button(frame1, text='POL', bg='lightgrey')
+b1.grid(row=0, column=1, sticky='news', padx=10, pady=10)
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="This is the start page", font=LARGE_FONT)
-        label.grid(row=0, column=0, pady=10, padx=10)
+b2 = tk.Button(frame1, text='EIS', bg='lightgrey')
+b2.grid(row=1, column=1, sticky='news', padx=10, pady=10)
 
-        button = tk.Button(self, text="Visit Page 1", command=lambda: qf("Check me out, I'm passing vars!"))
-        button.grid(row=1, column=0)
+b3 = tk.Button(frame1, text='ECR', bg='lightgrey')
+b3.grid(row=2, column=1, sticky='news', padx=10, pady=10)
 
-app = ZBT_GUI()
-app.mainloop()
+window.mainloop()
